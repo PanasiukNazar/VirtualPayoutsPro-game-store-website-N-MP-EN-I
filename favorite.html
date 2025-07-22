@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Virtual Payouts Pro</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="images/icons/favicon.png" />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/bootstrap/css/bootstrap.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="fonts/iconic/css/material-design-iconic-font.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="fonts/linearicons-v1.0.0/icon-font.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/animate/animate.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/css-hamburgers/hamburgers.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/animsition/css/animsition.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/select2/select2.min.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/daterangepicker/daterangepicker.css"
+        />
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/MagnificPopup/magnific-popup.css"
+        />
+        <!--===============================================================================================-->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="vendor/perfect-scrollbar/perfect-scrollbar.css"
+        />
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <!--===============================================================================================-->
+        <style>
+            /* Container padding and background */
+            .shopping-cart.section {
+                padding: 40px 0;
+                background-color: #f9f9f9;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            /* Table styling */
+            .shopping-summary {
+                width: 100%;
+                border-collapse: collapse;
+                background: #fff;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .shopping-summary thead tr.main-heading {
+                background-color: #1a1a1a;
+                color: #fff;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            .shopping-summary thead th {
+                padding: 15px 20px;
+                border-bottom: 2px solid #333;
+                text-align: center;
+            }
+
+            .shopping-summary tbody td {
+                padding: 15px 20px;
+                vertical-align: middle;
+                border-bottom: 1px solid #eee;
+                text-align: center;
+            }
+
+            .shopping-summary tbody td.product-des {
+                text-align: left;
+            }
+
+            .shopping-summary tbody td.product-des .product-name a {
+                font-weight: 600;
+                color: #222;
+                font-size: 16px;
+                text-decoration: none;
+            }
+
+            .shopping-summary tbody td.product-des .product-name a:hover {
+                color: #007bff;
+                text-decoration: underline;
+            }
+
+            .shopping-summary tbody td.product-des p.product-des {
+                font-size: 13px;
+                color: #666;
+                margin-top: 6px;
+            }
+
+            /* Product image */
+            .shopping-summary tbody td.image img {
+                width: 70px;
+                height: auto;
+                border-radius: 6px;
+                object-fit: cover;
+            }
+
+            /* Remove icon */
+            .action a i.fa-trash {
+                color: #dc3545;
+                font-size: 18px;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+
+            .action a i.fa-trash:hover {
+                color: #a71d2a;
+            }
+
+            /* Responsive: stack rows on small devices */
+            @media (max-width: 768px) {
+                .shopping-summary thead {
+                    display: none;
+                }
+
+                .shopping-summary tbody tr {
+                    display: block;
+                    margin-bottom: 20px;
+                    background: #fff;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                    padding: 15px;
+                }
+
+                .shopping-summary tbody td {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px 15px;
+                    text-align: left;
+                    border-bottom: none;
+                }
+
+                .shopping-summary tbody td.product-des {
+                    flex-direction: column;
+                    flex: 1 1 70%;
+                }
+
+                .shopping-summary tbody td.image {
+                    flex: 1 1 25%;
+                }
+
+                .shopping-summary tbody td.action {
+                    justify-content: flex-end;
+                }
+            }
+        </style>
+    </head>
+    <body class="animsition">
+        <!-- Header -->
+        <header
+            class="header-v3"
+            style="background: #222 !important; margin-bottom: 70px"
+        >
+            <!-- Header desktop -->
+            <div class="container-menu-desktop trans-03 fix-menu-desktop">
+                <div class="wrap-menu-desktop">
+                    <nav
+                        class="limiter-menu-desktop p-l-45"
+                        style="justify-content: space-between"
+                    >
+                        <!-- Logo desktop -->
+                        <a href="index.html" class="logo">
+                            <h3 style="color: #fff; text-transform: uppercase">
+                                Virtual Payouts Pro
+                            </h3>
+                        </a>
+
+                        <!-- Menu desktop -->
+                        <div class="menu-desktop">
+                            <ul class="main-menu">
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+
+                                <li>
+                                    <a href="product.html">Store</a>
+                                </li>
+
+                                <li>
+                                    <a href="about.html">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="cart.html">Cart</a>
+                                </li>
+                                <li>
+                                    <a href="favorite.html">Wishlist</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Header Mobile -->
+            <div class="wrap-header-mobile">
+                <!-- Logo moblie -->
+                <div class="logo-mobile">
+                    <a href="index.html"
+                        ><h4
+                            style="
+                                text-transform: uppercase;
+                                color: #333;
+                                font-size: 20px;
+                            "
+                        >
+                            Virtual Payouts Pro
+                        </h4></a
+                    >
+                </div>
+
+                <!-- Button show menu -->
+                <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="menu-mobile">
+                <ul class="main-menu-m">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <span class="arrow-main-menu-m">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </span>
+                    </li>
+
+                    <li>
+                        <a href="product.html">Store</a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="cart.html">Cart</a>
+                    </li>
+
+                    <li>
+                        <a href="favorite.html">Wishlist</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Favorites List -->
+        <div class="shopping-cart section">
+            <div class="container">
+                <div class="row" style="overflow: auto">
+                    <div class="col-12">
+                        <!-- Favorites Overview -->
+                        <table class="table shopping-summary">
+                            <thead>
+                                <tr class="main-heading">
+                                    <th>PRODUCT</th>
+                                    <th>NAME</th>
+                                    <th class="text-center">PRICE</th>
+                                    <th class="text-center">REMOVE</th>
+                                </tr>
+                            </thead>
+                            <tbody data-store-el="favoriteItems"></tbody>
+                        </table>
+                        <!--/ End Favorites Overview -->
+
+                        <template data-store-el="favoritesItemTemplate">
+                            <tr>
+                                <td class="image" data-title="No.">
+                                    <img data-store-el="itemImage" alt="#" />
+                                </td>
+                                <td
+                                    class="product-des"
+                                    data-title="Description"
+                                >
+                                    <p class="product-name">
+                                        <a data-store-el="itemTitle"></a>
+                                    </p>
+                                    <p
+                                        class="product-des"
+                                        data-store-el="itemDescription"
+                                    ></p>
+                                </td>
+                                <td class="price" data-title="Price">
+                                    <span data-store-el="itemPrice"></span>€
+                                </td>
+                                <td class="action" data-title="Remove">
+                                    <a>
+                                        <i
+                                            data-store-el="itemToggleFavorite"
+                                            aria-hidden="true"
+                                            class="fa fa-solid fa-trash"
+                                        ></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Favorites List -->
+
+        <!-- Footer -->
+        <footer class="bg3 p-t-75 p-b-32">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3 p-b-50">
+                        <h4 class="stext-301 cl0 p-b-30">Categories</h4>
+
+                        <ul>
+                            <li class="p-b-10">
+                                <a
+                                    href="#"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    PC Games
+                                </a>
+                            </li>
+
+                            <li class="p-b-10">
+                                <a
+                                    href="#"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Console Games
+                                </a>
+                            </li>
+
+                            <li class="p-b-10">
+                                <a
+                                    href="#"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Accessories & Controllers
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 p-b-50">
+                        <h4 class="stext-301 cl0 p-b-30">Support</h4>
+
+                        <ul>
+                            <li class="p-b-10">
+                                <a
+                                    href="index.html"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="p-b-10">
+                                <a
+                                    href="terms-of-use.html"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Terms of Use
+                                </a>
+                            </li>
+
+                            <li class="p-b-10">
+                                <a
+                                    href="cookie-policy.html"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Cookie Policy
+                                </a>
+                            </li>
+
+                            <li class="p-b-10">
+                                <a
+                                    href="privacy-policy.html"
+                                    class="stext-107 cl7 hov-cl1 trans-04"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 p-b-50">
+                        <h4 class="stext-301 cl0 p-b-30">CONTACT</h4>
+
+                        <p class="stext-107 cl7 size-201">
+                            Questions? Visit our store at 491 Forest Rd,
+                            Penshurst NSW 2222 or call us at +61295809888
+                        </p>
+                        <p>virtual_payouts_pro@gmail.com</p>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-3 p-b-50">
+                        <h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+
+                        <form action="thanks.html" method="get">
+                            <div class="wrap-input1 w-full p-b-4">
+                                <input
+                                    class="input1 bg-none plh1 stext-107 cl7"
+                                    type="text"
+                                    name="email"
+                                    placeholder="email@example.com"
+                                    required
+                                />
+                                <div class="focus-input1 trans-04"></div>
+                            </div>
+
+                            <div class="p-t-18">
+                                <button
+                                    class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+                                    type="submit"
+                                >
+                                    Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="p-t-40">
+                    <div class="flex-c-m flex-w p-b-18">
+                        <a href="#" class="m-all-1">
+                            <img
+                                src="images/icons/icon-pay-01.png"
+                                alt="ICON-PAY"
+                            />
+                        </a>
+
+                        <a href="#" class="m-all-1">
+                            <img
+                                src="images/icons/icon-pay-02.png"
+                                alt="ICON-PAY"
+                            />
+                        </a>
+
+                        <a href="#" class="m-all-1">
+                            <img
+                                src="images/icons/icon-pay-03.png"
+                                alt="ICON-PAY"
+                            />
+                        </a>
+
+                        <a href="#" class="m-all-1">
+                            <img
+                                src="images/icons/icon-pay-04.png"
+                                alt="ICON-PAY"
+                            />
+                        </a>
+
+                        <a href="#" class="m-all-1">
+                            <img
+                                src="images/icons/icon-pay-05.png"
+                                alt="ICON-PAY"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Back to top -->
+        <div class="btn-back-to-top" id="myBtn">
+            <span class="symbol-btn-back-to-top">
+                <i class="zmdi zmdi-chevron-up"></i>
+            </span>
+        </div>
+
+        <!-- Cookie Banner -->
+        <div class="cookie-wrapper show">
+            <div>
+                <i class="bx bx-cookie"></i>
+                <h2 style="text-align: center">Cookie Notice</h2>
+            </div>
+            <div class="data">
+                <p>
+                    This website uses cookies to enhance your browsing and
+                    shopping experience in our PC and console games store.
+                    <a href="cookie-policy.html">Learn more...</a>
+                </p>
+            </div>
+            <div class="buttons">
+                <button class="cookie-button" id="acceptBtn">I accept</button>
+                <button class="cookie-button" id="declineBtn">I decline</button>
+            </div>
+        </div>
+        <!-- End Cookie Banner -->
+
+        <!-- jQuery (via Google CDN) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- Bootstrap (via jsDelivr as Google CDN doesn't host Bootstrap) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Select2 (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <!-- Moment.js (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+
+        <!-- DateRangePicker (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/daterangepicker@3.1/daterangepicker.min.js"></script>
+
+        <!-- Slick carousel (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="js/slick-custom.js"></script>
+
+        <!-- Animsition (no Google/jQuery CDN – fallback to local or use jsDelivr if needed) -->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+
+        <!-- Parallax100 (custom lib – fallback to local) -->
+        <script src="vendor/parallax100/parallax100.js"></script>
+
+        <!-- Magnific Popup (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+
+        <!-- Isotope (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+
+        <!-- SweetAlert (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+
+        <!-- Perfect Scrollbar (via jsDelivr) -->
+        <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js"></script>
+
+        <!-- Your custom scripts -->
+        <script src="js/main.js"></script>
+        <script src="js/cookiebanner.js"></script>
+        <script src="js/store.js"></script>
+        <script src="products.js"></script>
+    </body>
+</html>
